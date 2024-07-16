@@ -18,5 +18,7 @@ namespace Latih13_mdiformLanjutan
         public string Gender { get; set; } = string.Empty;
         public string Alamat { get; set; } = string.Empty;
         public string Kota { get; set; } = string.Empty;
+
+        public string JenisKelamin { get; set; } = string.Empty;
     }
 }

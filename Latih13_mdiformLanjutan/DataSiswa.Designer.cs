@@ -36,9 +36,10 @@
             btn_save = new Button();
             btn_delete = new Button();
             panel2 = new Panel();
+            rb_perempuan = new RadioButton();
+            rb_laki = new RadioButton();
             txt_kota = new TextBox();
             label5 = new Label();
-            cb_gender = new ComboBox();
             txt_alamat = new TextBox();
             label4 = new Label();
             dtp_tgl = new DateTimePicker();
@@ -69,6 +70,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(675, 452);
             tabControl1.TabIndex = 0;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -119,7 +121,7 @@
             // 
             // btn_save
             // 
-            btn_save.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_save.Location = new Point(564, 383);
             btn_save.Name = "btn_save";
             btn_save.Size = new Size(97, 24);
@@ -130,7 +132,7 @@
             // 
             // btn_delete
             // 
-            btn_delete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_delete.Location = new Point(462, 383);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(100, 24);
@@ -142,9 +144,10 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.GradientActiveCaption;
+            panel2.Controls.Add(rb_perempuan);
+            panel2.Controls.Add(rb_laki);
             panel2.Controls.Add(txt_kota);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(cb_gender);
             panel2.Controls.Add(txt_alamat);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(dtp_tgl);
@@ -154,6 +157,28 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(325, 364);
             panel2.TabIndex = 15;
+            // 
+            // rb_perempuan
+            // 
+            rb_perempuan.AutoSize = true;
+            rb_perempuan.Location = new Point(162, 151);
+            rb_perempuan.Name = "rb_perempuan";
+            rb_perempuan.Size = new Size(104, 24);
+            rb_perempuan.TabIndex = 10;
+            rb_perempuan.TabStop = true;
+            rb_perempuan.Text = "Perempuan";
+            rb_perempuan.UseVisualStyleBackColor = true;
+            // 
+            // rb_laki
+            // 
+            rb_laki.AutoSize = true;
+            rb_laki.Location = new Point(27, 148);
+            rb_laki.Name = "rb_laki";
+            rb_laki.Size = new Size(83, 24);
+            rb_laki.TabIndex = 9;
+            rb_laki.TabStop = true;
+            rb_laki.Text = "Laki laki";
+            rb_laki.UseVisualStyleBackColor = true;
             // 
             // txt_kota
             // 
@@ -172,15 +197,6 @@
             label5.Size = new Size(106, 20);
             label5.TabIndex = 6;
             label5.Text = " Alamat - Kota";
-            // 
-            // cb_gender
-            // 
-            cb_gender.Anchor = AnchorStyles.None;
-            cb_gender.FormattingEnabled = true;
-            cb_gender.Location = new Point(24, 141);
-            cb_gender.Name = "cb_gender";
-            cb_gender.Size = new Size(276, 28);
-            cb_gender.TabIndex = 6;
             // 
             // txt_alamat
             // 
@@ -244,7 +260,7 @@
             // 
             // txt_NIS
             // 
-            txt_NIS.Anchor = AnchorStyles.None;
+            txt_NIS.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_NIS.Location = new Point(3, 158);
             txt_NIS.Name = "txt_NIS";
             txt_NIS.Size = new Size(280, 27);
@@ -252,7 +268,7 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.None;
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Location = new Point(3, 135);
             label3.Name = "label3";
@@ -262,7 +278,7 @@
             // 
             // txt_name
             // 
-            txt_name.Anchor = AnchorStyles.None;
+            txt_name.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_name.Location = new Point(3, 95);
             txt_name.Name = "txt_name";
             txt_name.Size = new Size(280, 27);
@@ -270,7 +286,7 @@
             // 
             // label
             // 
-            label.Anchor = AnchorStyles.None;
+            label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label.AutoSize = true;
             label.Location = new Point(3, 72);
             label.Name = "label";
@@ -280,7 +296,7 @@
             // 
             // txt_siswaID
             // 
-            txt_siswaID.Anchor = AnchorStyles.None;
+            txt_siswaID.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_siswaID.Location = new Point(3, 33);
             txt_siswaID.Name = "txt_siswaID";
             txt_siswaID.Size = new Size(280, 27);
@@ -288,7 +304,7 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(3, 10);
             label1.Name = "label1";
@@ -334,12 +350,13 @@
         private Panel panel2;
         private TextBox txt_kota;
         private Label label5;
-        private ComboBox cb_gender;
         private TextBox txt_alamat;
         private Label label4;
         private DateTimePicker dtp_tgl;
         private TextBox txt_tempatlahir;
         private Label label2;
         private DataGridView dataGridView1;
+        private RadioButton rb_perempuan;
+        private RadioButton rb_laki;
     }
 }
