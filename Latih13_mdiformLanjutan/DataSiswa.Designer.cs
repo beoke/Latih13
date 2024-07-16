@@ -69,7 +69,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(675, 452);
-            tabControl1.TabIndex = 0;
+            tabControl1.TabIndex = 9;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
@@ -125,7 +125,7 @@
             btn_save.Location = new Point(564, 383);
             btn_save.Name = "btn_save";
             btn_save.Size = new Size(97, 24);
-            btn_save.TabIndex = 9;
+            btn_save.TabIndex = 10;
             btn_save.Text = "Save";
             btn_save.UseVisualStyleBackColor = true;
             btn_save.Click += btn_save_Click;
@@ -164,10 +164,11 @@
             rb_perempuan.Location = new Point(162, 151);
             rb_perempuan.Name = "rb_perempuan";
             rb_perempuan.Size = new Size(104, 24);
-            rb_perempuan.TabIndex = 10;
+            rb_perempuan.TabIndex = 7;
             rb_perempuan.TabStop = true;
             rb_perempuan.Text = "Perempuan";
             rb_perempuan.UseVisualStyleBackColor = true;
+            rb_perempuan.CheckedChanged += rb_perempuan_CheckedChanged;
             // 
             // rb_laki
             // 
@@ -175,7 +176,7 @@
             rb_laki.Location = new Point(27, 148);
             rb_laki.Name = "rb_laki";
             rb_laki.Size = new Size(83, 24);
-            rb_laki.TabIndex = 9;
+            rb_laki.TabIndex = 6;
             rb_laki.TabStop = true;
             rb_laki.Text = "Laki laki";
             rb_laki.UseVisualStyleBackColor = true;
@@ -205,7 +206,7 @@
             txt_alamat.Multiline = true;
             txt_alamat.Name = "txt_alamat";
             txt_alamat.Size = new Size(281, 76);
-            txt_alamat.TabIndex = 7;
+            txt_alamat.TabIndex = 8;
             // 
             // label4
             // 

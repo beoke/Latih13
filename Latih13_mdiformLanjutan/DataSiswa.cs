@@ -46,6 +46,7 @@ namespace Latih13_mdiformLanjutan
             }
 
             ShowInput(newSiswa);
+
         }
 
         public void ShowInput(SiswaModel siswa)
@@ -59,18 +60,18 @@ namespace Latih13_mdiformLanjutan
             txt_kota.Text = siswa.Kota;
 
             // Load the state of the radio buttons
-            if (siswa.JenisKelamin == "Laki Laki")
+            if (siswa.Gender == "Laki Laki")
             {
                 rb_laki.Checked = true;
             }
-            else if (siswa.JenisKelamin == "Perempuan")
+            else if (siswa.Gender == "Perempuan")
             {
                 rb_perempuan.Checked = true;
             }
 
             tabControl1.SelectedIndex = 1;
         }
-            
+
         private void btn_save_Click(object sender, EventArgs e)
         {
             SaveData();
@@ -93,11 +94,11 @@ namespace Latih13_mdiformLanjutan
                 // Save the state of the radio buttons
                 if (rb_laki.Checked)
                 {
-                    siswa.JenisKelamin = "Option1";
+                    siswa.Gender = "Option1";
                 }
                 else if (rb_perempuan.Checked)
                 {
-                    siswa.JenisKelamin = "Option2";
+                    siswa.Gender = "Option2";
                 }
 
                 db.SaveChanges();
@@ -148,11 +149,11 @@ namespace Latih13_mdiformLanjutan
                     txt_kota.Text = siswa.Kota;
 
                     // Load the state of the radio buttons
-                    if (siswa.JenisKelamin == "Laki Laki")
+                    if (siswa.Gender == "Laki Laki")
                     {
                         rb_laki.Checked = true;
                     }
-                    else if (siswa.JenisKelamin == "Perempuan")
+                    else if (siswa.Gender == "Perempuan")
                     {
                         rb_perempuan.Checked = true;
                     }
@@ -161,6 +162,11 @@ namespace Latih13_mdiformLanjutan
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_perempuan_CheckedChanged(object sender, EventArgs e)
         {
 
         }
