@@ -15,12 +15,16 @@ namespace Latih13_mdiformLanjutan
 {
     public partial class DataSiswa : Form
     {
+        private int selectedSiswaID;
         public DataSiswa()
         {
             InitializeComponent();
             ListData();
             this.Load += new EventHandler(DataSiswa_Load);
             tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
+            dataGridView1.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
+            dataGridView1.CellDoubleClick += new DataGridViewCellEventHandler(dataGridView1_CellDoubleClick);
+            
         }
 
         private void ListData()
@@ -57,9 +61,9 @@ namespace Latih13_mdiformLanjutan
             txt_tempatlahir.Text = siswa.TempatLahir;
             dtp_tgl.Value = siswa.TglLahir;
             txt_alamat.Text = siswa.Alamat;
-            txt_kota.Text = siswa.Kota;
+            tx_kota.Text = siswa.Kota;
 
-            // Load the state of the radio buttons
+
             if (siswa.Gender == "Laki Laki")
             {
                 rb_laki.Checked = true;
@@ -76,6 +80,8 @@ namespace Latih13_mdiformLanjutan
         {
             SaveData();
             ListData();
+            ClearForm();
+            tabControl1.SelectedIndex = 0;
         }
 
         public void SaveData()
@@ -89,23 +95,34 @@ namespace Latih13_mdiformLanjutan
                 siswa.TempatLahir = txt_tempatlahir.Text;
                 siswa.TglLahir = dtp_tgl.Value;
                 siswa.Alamat = txt_alamat.Text;
-                siswa.Kota = txt_kota.Text;
+                siswa.Kota = tx_kota.Text;
 
-                // Save the state of the radio buttons
+
                 if (rb_laki.Checked)
                 {
-                    siswa.Gender = "Option1";
+                    siswa.Gender = "Laki laki";
                 }
                 else if (rb_perempuan.Checked)
                 {
-                    siswa.Gender = "Option2";
+                    siswa.Gender = "Perempuan";
                 }
 
                 db.SaveChanges();
             }
 
-            // After saving, switch back to TabPage 1
             tabControl1.SelectedIndex = 1;
+        }
+        private void ClearForm()
+        {
+            txt_siswaID.Clear();
+            txt_name.Clear();
+            txt_NIS.Clear();
+            txt_tempatlahir.Clear();
+            dtp_tgl.Value = DateTime.Now;
+            txt_alamat.Clear();
+            tx_kota.Clear();
+            rb_laki.Checked = false;
+            rb_perempuan.Checked = false;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,12 +142,11 @@ namespace Latih13_mdiformLanjutan
 
         private int GetCurrentSiswaID()
         {
-            // Replace this with the actual logic to get the selected SiswaID
             if (int.TryParse(txt_siswaID.Text, out int siswaID))
             {
                 return siswaID;
             }
-            return 0; // or any default value
+            return 0;
         }
 
         public void LoadData(int siswaID)
@@ -146,9 +162,9 @@ namespace Latih13_mdiformLanjutan
                     txt_tempatlahir.Text = siswa.TempatLahir;
                     dtp_tgl.Value = siswa.TglLahir;
                     txt_alamat.Text = siswa.Alamat;
-                    txt_kota.Text = siswa.Kota;
+                    tx_kota.Text = siswa.Kota;
 
-                    // Load the state of the radio buttons
+                    // load radio button
                     if (siswa.Gender == "Laki Laki")
                     {
                         rb_laki.Checked = true;
@@ -161,6 +177,44 @@ namespace Latih13_mdiformLanjutan
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                selectedSiswaID = Convert.ToInt32(row.Cells["SiswaId"].Value);
+            }
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (selectedSiswaID > 0)
+            {
+                var result = MessageBox.Show("Apa anda yakin ingin menghapus data di atas?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteData(selectedSiswaID);
+                    ListData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Mohon pilih data yang mau di hapus", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void DeleteData(int siswaID)
+        {
+            using (var db = new Dbcon())
+            {
+                var siswa = db.siswa.Find(siswaID);
+                if (siswa != null)
+                {
+                    db.siswa.Remove(siswa);
+                    db.SaveChanges();
+                }
+            }
+        }
+
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
@@ -169,6 +223,22 @@ namespace Latih13_mdiformLanjutan
         private void rb_perempuan_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                selectedSiswaID = Convert.ToInt32(row.Cells["SiswaId"].Value);
+                tabControl1.SelectedIndex = 1;
+                LoadData(selectedSiswaID);
+            }
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            
         }
     }
 }

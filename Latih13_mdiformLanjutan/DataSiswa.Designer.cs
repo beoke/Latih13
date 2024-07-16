@@ -30,12 +30,13 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            btn_delete = new Button();
             dataGridView1 = new DataGridView();
             btn_new = new Button();
             tabPage2 = new TabPage();
             btn_save = new Button();
-            btn_delete = new Button();
             panel2 = new Panel();
+            tx_kota = new TextBox();
             rb_perempuan = new RadioButton();
             rb_laki = new RadioButton();
             txt_kota = new TextBox();
@@ -62,9 +63,9 @@
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -74,6 +75,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btn_delete);
             tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(btn_new);
             tabPage1.Location = new Point(4, 29);
@@ -84,6 +86,17 @@
             tabPage1.Text = "List Data";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btn_delete
+            // 
+            btn_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btn_delete.Location = new Point(443, 347);
+            btn_delete.Name = "btn_delete";
+            btn_delete.Size = new Size(100, 24);
+            btn_delete.TabIndex = 11;
+            btn_delete.Text = "Delete";
+            btn_delete.UseVisualStyleBackColor = true;
+            btn_delete.Click += btn_delete_Click;
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -92,6 +105,9 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(657, 322);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+            dataGridView1.DoubleClick += dataGridView1_DoubleClick;
             // 
             // btn_new
             // 
@@ -107,7 +123,6 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(btn_save);
-            tabPage2.Controls.Add(btn_delete);
             tabPage2.Controls.Add(panel2);
             tabPage2.Controls.Add(panel1);
             tabPage2.Location = new Point(4, 29);
@@ -125,25 +140,16 @@
             btn_save.Location = new Point(564, 383);
             btn_save.Name = "btn_save";
             btn_save.Size = new Size(97, 24);
-            btn_save.TabIndex = 10;
+            btn_save.TabIndex = 11;
             btn_save.Text = "Save";
             btn_save.UseVisualStyleBackColor = true;
             btn_save.Click += btn_save_Click;
-            // 
-            // btn_delete
-            // 
-            btn_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btn_delete.Location = new Point(462, 383);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(100, 24);
-            btn_delete.TabIndex = 8;
-            btn_delete.Text = "Delete";
-            btn_delete.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.GradientActiveCaption;
+            panel2.Controls.Add(tx_kota);
             panel2.Controls.Add(rb_perempuan);
             panel2.Controls.Add(rb_laki);
             panel2.Controls.Add(txt_kota);
@@ -158,8 +164,17 @@
             panel2.Size = new Size(325, 364);
             panel2.TabIndex = 15;
             // 
+            // tx_kota
+            // 
+            tx_kota.Anchor = AnchorStyles.None;
+            tx_kota.Location = new Point(21, 309);
+            tx_kota.Name = "tx_kota";
+            tx_kota.Size = new Size(281, 27);
+            tx_kota.TabIndex = 9;
+            // 
             // rb_perempuan
             // 
+            rb_perempuan.Anchor = AnchorStyles.None;
             rb_perempuan.AutoSize = true;
             rb_perempuan.Location = new Point(162, 151);
             rb_perempuan.Name = "rb_perempuan";
@@ -172,6 +187,7 @@
             // 
             // rb_laki
             // 
+            rb_laki.Anchor = AnchorStyles.None;
             rb_laki.AutoSize = true;
             rb_laki.Location = new Point(27, 148);
             rb_laki.Name = "rb_laki";
@@ -202,7 +218,7 @@
             // txt_alamat
             // 
             txt_alamat.Anchor = AnchorStyles.None;
-            txt_alamat.Location = new Point(21, 213);
+            txt_alamat.Location = new Point(21, 215);
             txt_alamat.Multiline = true;
             txt_alamat.Name = "txt_alamat";
             txt_alamat.Size = new Size(281, 76);
@@ -347,7 +363,6 @@
         private Label label1;
         private Button btn_new;
         private Button btn_save;
-        private Button btn_delete;
         private Panel panel2;
         private TextBox txt_kota;
         private Label label5;
@@ -359,5 +374,7 @@
         private DataGridView dataGridView1;
         private RadioButton rb_perempuan;
         private RadioButton rb_laki;
+        private TextBox tx_kota;
+        private Button btn_delete;
     }
 }
