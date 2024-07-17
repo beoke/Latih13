@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             masterToolStripMenuItem = new ToolStripMenuItem();
             siswaToolStripMenuItem = new ToolStripMenuItem();
+            mahasiswaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             // masterToolStripMenuItem
             // 
-            masterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { siswaToolStripMenuItem });
+            masterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { siswaToolStripMenuItem, mahasiswaToolStripMenuItem });
             masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             masterToolStripMenuItem.Size = new Size(104, 24);
             masterToolStripMenuItem.Text = "Master Data";
@@ -57,6 +58,12 @@
             siswaToolStripMenuItem.Size = new Size(224, 26);
             siswaToolStripMenuItem.Text = "Siswa";
             siswaToolStripMenuItem.Click += siswaToolStripMenuItem_Click;
+            // 
+            // mahasiswaToolStripMenuItem
+            // 
+            mahasiswaToolStripMenuItem.Name = "mahasiswaToolStripMenuItem";
+            mahasiswaToolStripMenuItem.Size = new Size(224, 26);
+            mahasiswaToolStripMenuItem.Text = "Mahasiswa";
             // 
             // Form1
             // 
@@ -79,5 +86,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem masterToolStripMenuItem;
         private ToolStripMenuItem siswaToolStripMenuItem;
+        private ToolStripMenuItem mahasiswaToolStripMenuItem;
     }
 }

@@ -92,7 +92,7 @@
             btn_delete.Location = new Point(443, 347);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(100, 24);
-            btn_delete.TabIndex = 11;
+            btn_delete.TabIndex = 1;
             btn_delete.Text = "Delete";
             btn_delete.UseVisualStyleBackColor = true;
             btn_delete.Click += btn_delete_Click;
@@ -115,7 +115,7 @@
             btn_new.Location = new Point(549, 342);
             btn_new.Name = "btn_new";
             btn_new.Size = new Size(94, 29);
-            btn_new.TabIndex = 1;
+            btn_new.TabIndex = 2;
             btn_new.Text = "new";
             btn_new.UseVisualStyleBackColor = true;
             btn_new.Click += btn_new_Click;
@@ -140,7 +140,7 @@
             btn_save.Location = new Point(564, 383);
             btn_save.Name = "btn_save";
             btn_save.Size = new Size(97, 24);
-            btn_save.TabIndex = 11;
+            btn_save.TabIndex = 10;
             btn_save.Text = "Save";
             btn_save.UseVisualStyleBackColor = true;
             btn_save.Click += btn_save_Click;

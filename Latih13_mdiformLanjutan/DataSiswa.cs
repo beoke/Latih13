@@ -24,7 +24,6 @@ namespace Latih13_mdiformLanjutan
             tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
             dataGridView1.CellDoubleClick += new DataGridViewCellEventHandler(dataGridView1_CellDoubleClick);
-            
         }
 
         private void ListData()
